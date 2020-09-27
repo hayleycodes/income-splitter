@@ -9,8 +9,17 @@ function App() {
     smile: "0.00",
     mojo: "0.00",
     everyday: "0.00",
+    calculateTax: true,
   });
   const copyIcon = require("../src/assets/copy.png");
+
+  const handleCheckboxChange = (event: any) => {
+    const isChecked = event.target.checked;
+    setIncome((prevIncome) => ({
+      ...prevIncome,
+      calculateTax: isChecked,
+    }));
+  };
 
   const handleChange = (event: any) => {
     const { value } = event.target;
@@ -27,7 +36,10 @@ function App() {
   };
 
   useEffect(() => {
-    const tax = parseInt(income.grossIncome) * 0.25;
+    let tax = 0;
+    if (income.calculateTax) {
+      tax = parseInt(income.grossIncome) * 0.25;
+    }
     const netIncome = parseInt(income.grossIncome) - tax;
     const splurge = (netIncome * 0.1).toFixed(2);
     const smile = (netIncome * 0.1).toFixed(2);
@@ -41,7 +53,7 @@ function App() {
       mojo: mojo,
       everyday: everyday,
     }));
-  }, [income.grossIncome]);
+  }, [income.grossIncome, income.calculateTax]);
 
   return (
     <div className="app">
@@ -59,8 +71,20 @@ function App() {
             ></input>
           </div>
         </div>
-        <div className="account" id="tax">
-          <h3>Tax</h3>
+        <div className={`account tax-enabled-${income.calculateTax}`} id="tax">
+          <div id="tax-wrapper">
+            <h3>Tax</h3>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={income.calculateTax}
+                onChange={(event) => {
+                  handleCheckboxChange(event);
+                }}
+              />
+              <span className="slider" />
+            </label>
+          </div>
           <div className="result">
             <p>${income.tax}</p>
             <button>
