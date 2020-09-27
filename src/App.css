@@ -1,38 +1,80 @@
-.App {
+.app {
+  width: 400px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+h1 {
+  color: #fff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input[type="number"] {
+  width: 100%;
+  border: 1px solid #000;
+  box-shadow: 0px 0px 2px #fff;
+  font-size: 2rem;
+  text-align: right;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  flex-basis: 15px;
+  border: 1px solid #000;
+  box-shadow: 0px 0px 2px #fff;
+  font-size: 1.5rem;
+  margin: 2px 1px 2px;
+  align-self: stretch;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button img {
+  height: 15px;
+}
+
+hr {
+  color: #fff;
+}
+
+.account {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 10px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.account .result {
+  display: flex;
+  width: 60%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.account h3,
+.account p {
+  margin: 2px 0;
+}
+
+.account h3 {
+  width: 30%;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.account p {
+  flex-grow: 1;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 0px 0px 4px #fff;
+  font-size: 2rem;
+  text-align: right;
+  padding: 0 2px;
+}
+
+/* to remove the arrows on the number inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
