@@ -23,7 +23,6 @@ function App() {
 
   const handleChange = (event: any) => {
     const { value } = event.target;
-    console.log(event.target.value.length + 1);
     if (!value) {
       event.target.style.width = "120px";
       return;
@@ -33,6 +32,17 @@ function App() {
       ...prevIncome,
       grossIncome: value,
     }));
+  };
+
+  const copyToClipboard = (value: string) => {
+    const el = document.createElement("textarea");
+    el.value = value;
+    el.setAttribute("readonly", "");
+    el.style.position = "absolute";
+    el.style.left = "-9999px";
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
   };
 
   useEffect(() => {
@@ -87,7 +97,7 @@ function App() {
           </div>
           <div className="result">
             <p>${income.tax}</p>
-            <button>
+            <button onClick={() => copyToClipboard(income.tax)}>
               <img src={copyIcon} alt="Copy paste icon." />
             </button>
           </div>
@@ -96,7 +106,7 @@ function App() {
           <h3>Splurge</h3>
           <div className="result">
             <p>${income.splurge}</p>
-            <button>
+            <button onClick={() => copyToClipboard(income.splurge)}>
               <img src={copyIcon} alt="Copy paste icon." />
             </button>
           </div>
@@ -105,7 +115,7 @@ function App() {
           <h3>Smile</h3>
           <div className="result">
             <p>${income.smile}</p>
-            <button>
+            <button onClick={() => copyToClipboard(income.smile)}>
               <img src={copyIcon} alt="Copy paste icon." />
             </button>
           </div>
@@ -114,7 +124,7 @@ function App() {
           <h3>Mojo</h3>
           <div className="result">
             <p>${income.mojo}</p>
-            <button>
+            <button onClick={() => copyToClipboard(income.mojo)}>
               <img src={copyIcon} alt="Copy paste icon." />
             </button>
           </div>
@@ -123,7 +133,7 @@ function App() {
           <h3>Everyday</h3>
           <div className="result">
             <p>${income.everyday}</p>
-            <button>
+            <button onClick={() => copyToClipboard(income.everyday)}>
               <img src={copyIcon} alt="Copy paste icon." />
             </button>
           </div>
