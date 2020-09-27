@@ -4,6 +4,19 @@
   font-size: 1.3rem;
 }
 
+@media (max-width: 400px) {
+  .app {
+    width: 250px !important;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .app {
+    width: 340px;
+  }
+}
+
 h1 {
   color: #34495e;
   text-align: center;
@@ -16,6 +29,13 @@ input[type="number"] {
   font-size: 2rem;
   text-align: right;
   outline: none;
+}
+
+@media (max-width: 440px) {
+  input[type="number"] {
+    width: 90px;
+    font-size: 1.5rem;
+  }
 }
 
 button {
